@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: roboshop-deployment
+spec:
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      containers:
+        - image: clahandevops/clahan-devops-cart:latest
+          name: cart-container
+          port:
+            - containerPort: 80
+  replicas: 2
+  selector:
+    matchlabels:
+      app: web
